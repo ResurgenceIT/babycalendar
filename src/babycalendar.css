@@ -1,0 +1,29 @@
+:root {
+	--calendar-border-color: rgb(206, 212, 218);
+	--calendar-day-border-color: rgba(206, 212, 218, 0.3);
+	--calendar-header-background-color: #eee;
+	--calendar-event-background-hover-color: #eee;
+}
+
+.babycalendar {
+	display: grid;
+	grid-template-rows: 0fr 1fr;
+	border: 1px solid var(--calendar-border-color);
+	max-width: 20em;
+	max-height: 20em;
+	width: 20em;
+	height: 20em;
+}
+
+.babycalendar .header-row {
+	display: grid;
+	border-bottom: 1px solid var(--calendar-border-color);
+	background-color: var(--calendar-header-background-color);
+	grid-template-columns: repeat(7, 14%);
+	justify-items: center;
+}
+
+.babycalendar .header-day {
+	padding: 0.2em;
+}
+
