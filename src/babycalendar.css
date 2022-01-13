@@ -1,22 +1,24 @@
 :root {
-	--calendar-border-color: rgb(206, 212, 218);
-	--calendar-day-border-color: rgba(206, 212, 218, 0.3);
-	--calendar-header-background-color: #eee;
-	--calendar-event-background-hover-color: #eee;
+	--babycalendar-border-color: rgb(206, 212, 218);
+	--babycalendar-header-background-color: #eee;
+	--babycalendar-event-background-hover-color: #eee;
+	--babycalendar-day-color: blue;
 }
 
 .babycalendar {
 	display: grid;
 	grid-template-rows: 0fr 0fr 1fr;
-	border: 1px solid var(--calendar-border-color);
+	border-left: 1px solid var(--babycalendar-border-color);
+	border-right: 1px solid var(--babycalendar-border-color);
+	border-bottom: 1px solid var(--babycalendar-border-color);
 	max-width: 20em;
 	width: 20em;
 }
 
 .babycalendar .header-row {
 	display: grid;
-	border-bottom: 1px solid var(--calendar-border-color);
-	background-color: var(--calendar-header-background-color);
+	border-bottom: 1px solid var(--babycalendar-border-color);
+	background-color: var(--babycalendar-header-background-color);
 	grid-template-columns: repeat(7, 14%);
 	justify-items: center;
 	height: 1.4em;
@@ -46,10 +48,14 @@
 }
 
 .babycalendar .body .week .day:hover {
-	background-color: var(--calendar-event-background-hover-color);
+	background-color: var(--babycalendar-event-background-hover-color);
 }
 
 .babycalendar .body .week .day.disabled:hover {background-color: transparent;}
+
+.babycalendar .body .week .day a {
+	color: var(--babycalendar-day-color);
+}
 
 .babycalendar .navigation {
 	display: grid;
@@ -57,6 +63,8 @@
 }
 
 .babycalendar .navigation .navigation-button {
+	border: 1px solid var(--babycalendar-border-color);
+	padding: 0.3em;
 }
 
 .babycalendar .navigation .left {
