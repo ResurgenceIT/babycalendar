@@ -111,6 +111,18 @@ export class BabyCalendar extends HTMLElement {
 		);
 	}
 
+	_dispatchDaySelected(day) {
+		this.dispatchEvent(
+			new CustomEvent("babycalendar-dayselected", {
+				detail: {
+					month: this._month,
+					year: this._year,
+					day: day,
+				},
+			})
+		);
+	}
+
 	_generateRandomID(prefix) {
 		return `${prefix}-${Date.now()}`;
 	}
@@ -125,6 +137,22 @@ export class BabyCalendar extends HTMLElement {
 		let d = new Date(this._year, this._month);
 		let result = new Date(d.getFullYear(), d.getMonth() + 1, 0);
 		return result;
+	}
+
+	_onDayClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		let day = 0;
+
+		if (e.target.tagName === "A") {
+			day = parseInt(e.target.innerText);
+		} else {
+			let el = e.target.children[0];
+			day = parseInt(el.innerText);
+		}
+
+		this._dispatchDaySelected(day);
 	}
 
 	_onLeftClick() {
@@ -258,7 +286,13 @@ export class BabyCalendar extends HTMLElement {
 			dayDiv.classList.add("day");
 
 			if (started) {
-				dayDiv.innerText = `${dayIndex - firstDayOfWeek + 1}`;
+				let a = document.createElement("a");
+				a.href = "javascript:void";
+				a.innerText = `${dayIndex - firstDayOfWeek + 1}`;
+				a.addEventListener("click", this._onDayClick.bind(this));
+
+				dayDiv.insertAdjacentElement("beforeend", a);
+				dayDiv.addEventListener("click", this._onDayClick.bind(this));
 			}
 
 			weekDiv.insertAdjacentElement("beforeend", dayDiv);

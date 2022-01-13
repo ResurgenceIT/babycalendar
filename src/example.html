@@ -30,8 +30,13 @@
 		});
 
 		calendar.addEventListener("babycalendar-changemonth", (e) => {
-			let calendarInfo = e.detail;
-			console.log(calendarInfo);
+			let info = e.detail;
+			console.log(info);
+		});
+
+		calendar.addEventListener("babycalendar-dayselected", (e) => {
+			let info = e.detail;
+			console.log(info);
 		});
 	</script>
 </html>
