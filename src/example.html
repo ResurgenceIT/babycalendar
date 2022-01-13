@@ -12,25 +12,26 @@
 		/>
 	</head>
 	<body>
-		<baby-calendar id="calendar" month="0" year="2022" shownavigation="true"></baby-calendar>
+		<baby-calendar
+			id="calendar"
+			month="0"
+			year="2022"
+			shownavigation="true"
+		></baby-calendar>
 
-		<button id="test1">May</button>
-		<button id="test2">June</button>
+		<button id="today">Today</button>
 	</body>
 
 	<script src="babycalendar.js" type="module"></script>
 	<script>
-		document.getElementById("test1").addEventListener("click", () => {
+		today.addEventListener("click", () => {
 			let el = document.getElementById("calendar");
-			el.month = 4;
-			el.redraw();
+			el.today();
 		});
 
-		document.getElementById("test2").addEventListener("click", () => {
-			let el = document.getElementById("calendar");
-			el.month = 5;
-			el.redraw();
+		calendar.addEventListener("babycalendar-changemonth", (e) => {
+			let calendarInfo = e.detail;
+			console.log(calendarInfo);
 		});
-
 	</script>
 </html>
