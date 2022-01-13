@@ -1,6 +1,60 @@
 # Baby Calendar
 A tiny, baby, useless (almost) calendar widget in Vanilla JS.
 
+## Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Example Using Baby Calendar</title>
+
+    <link
+      type="text/css"
+      rel="stylesheet"
+      media="screen"
+      href="babycalendar.css"
+    />
+
+    <style type="text/css">
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.1em;
+      }
+    </style>
+  </head>
+  <body>
+    <baby-calendar
+      id="calendar"
+      month="0"
+      year="2022"
+      shownavigation="true"
+    ></baby-calendar>
+
+    <button id="today">Today</button>
+  </body>
+
+  <script src="babycalendar.js" type="module"></script>
+  <script>
+    today.addEventListener("click", () => {
+      let el = document.getElementById("calendar");
+      el.today();
+    });
+
+    calendar.addEventListener("babycalendar-changemonth", (e) => {
+      let info = e.detail;
+      console.log(info);
+    });
+
+    calendar.addEventListener("babycalendar-dayselected", (e) => {
+      let info = e.detail;
+      console.log(info);
+    });
+  </script>
+</html>
+```
+
 ## License
 
 MIT License
