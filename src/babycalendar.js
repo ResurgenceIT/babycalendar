@@ -293,6 +293,8 @@ export class BabyCalendar extends HTMLElement {
 
 				dayDiv.insertAdjacentElement("beforeend", a);
 				dayDiv.addEventListener("click", this._onDayClick.bind(this));
+			} else {
+				dayDiv.classList.add("disabled");
 			}
 
 			weekDiv.insertAdjacentElement("beforeend", dayDiv);

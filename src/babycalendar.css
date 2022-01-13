@@ -11,7 +11,6 @@
 	border: 1px solid var(--calendar-border-color);
 	max-width: 20em;
 	width: 20em;
-	height: 20em;
 }
 
 .babycalendar .header-row {
@@ -43,7 +42,14 @@
 
 .babycalendar .body .week .day {
 	text-align: center;
+	padding: 0.5em;
 }
+
+.babycalendar .body .week .day:hover {
+	background-color: var(--calendar-event-background-hover-color);
+}
+
+.babycalendar .body .week .day.disabled:hover {background-color: transparent;}
 
 .babycalendar .navigation {
 	display: grid;
