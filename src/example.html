@@ -4,11 +4,33 @@
 		<meta charset="UTF-8" />
 		<title>Example Using Baby Calendar</title>
 
-		<link type="text/css" rel="stylesheet" media="screen" href="babycalendar.css" />
+		<link
+			type="text/css"
+			rel="stylesheet"
+			media="screen"
+			href="babycalendar.css"
+		/>
 	</head>
 	<body>
-		<baby-calendar></baby-calendar>
+		<baby-calendar id="calendar" month="0" year="2022"></baby-calendar>
+
+		<button id="test1">May</button>
+		<button id="test2">June</button>
 	</body>
 
 	<script src="babycalendar.js" type="module"></script>
+	<script>
+		document.getElementById("test1").addEventListener("click", () => {
+			let el = document.getElementById("calendar");
+			el.month = 4;
+			el.redraw();
+		});
+
+		document.getElementById("test2").addEventListener("click", () => {
+			let el = document.getElementById("calendar");
+			el.month = 5;
+			el.redraw();
+		});
+
+	</script>
 </html>
