@@ -10,7 +10,6 @@
 	grid-template-rows: 0fr 1fr;
 	border: 1px solid var(--calendar-border-color);
 	max-width: 20em;
-	max-height: 20em;
 	width: 20em;
 	height: 20em;
 }
@@ -25,5 +24,22 @@
 
 .babycalendar .header-day {
 	padding: 0.2em;
+}
+
+.babycalendar .body {
+	height: 100%;
+	width: 100%;
+	display: grid;
+}
+
+.babycalendar .body .week {
+	grid-template-columns: repeat(7, 1fr);
+	display: grid;
+	height: 100%;
+	width: 100%;
+}
+
+.babycalendar .body .week .day {
+	text-align: center;
 }
 
