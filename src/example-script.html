@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Example Using Baby Calendar</title>
+		<title>Example Using Baby Calendar in Script</title>
 
 		<link
 			type="text/css"
@@ -20,22 +20,21 @@
 	</head>
 	<body>
 		<main id="example">
-			<baby-calendar
-				id="calendar"
-				month="0"
-				year="2022"
-				shownavigation="true"
-			></baby-calendar>
-
 			<button id="today">Today</button>
 		</main>
 	</body>
 
 	<script src="babycalendar.js" type="module"></script>
 	<script>
+		let calendar = document.createElement("baby-calendar");
+		calendar.setAttribute("month", 0);
+		calendar.setAttribute("year", 2022);
+		calendar.setAttribute("shownavigation", true);
+
+		document.getElementById("example").insertAdjacentElement("afterbegin", calendar);
+
 		today.addEventListener("click", () => {
-			let el = document.getElementById("calendar");
-			el.today();
+			calendar.today();
 		});
 
 		calendar.addEventListener("babycalendar-changemonth", (e) => {
@@ -49,3 +48,4 @@
 		});
 	</script>
 </html>
+
