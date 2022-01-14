@@ -1,6 +1,8 @@
 # Baby Calendar
 A tiny, baby, useless (almost) calendar widget in Vanilla JS.
 
+![Screenshot 1](screenshot1.png)
+
 ## Example
 
 ```html
