@@ -130,6 +130,15 @@ calendar.addEventListener("babycalendar-dayselected", (e) => {
 });
 ```
 
+## Styling
+
+Baby Calendar is easily styled. The markup generated uses basic DIVs and a CSS grid display. All parts of the calendar, the body, header, navigation, buttons, and days, all have classes associated to them. Each item has a color variable as well.
+
+* **--babycalendar-border-color** - Used for borders. Default is rgb(206, 212, 218)
+* **--babycalendar-header-background-color** - Used for the background of the header (where the days are). Default is #eee
+* **--babycalendar-event-background-hover-color** - Used to control the background color of days when hovered over. Default is #eee
+* **--babycalendar-day-color** - Controls the color of the day numbers. Default is blue
+
 ## License
 
 MIT License
