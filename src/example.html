@@ -32,17 +32,34 @@
 	</body>
 
 	<script src="babycalendar.js" type="module"></script>
-	<script>
+	<script type="module">
+		let today = document.getElementById("today");
+		let calendar = document.getElementById("calendar");
+
+		calendar.eventDates = [
+			"2022-01-14",
+			"2022-01-22",
+			"2022-02-10",
+		];
+
+		/*
+		 * Listen for today click
+		 */
 		today.addEventListener("click", () => {
-			let el = document.getElementById("calendar");
-			el.today();
+			calendar.today();
 		});
 
+		/*
+		 * When the month is changed, write the information to console
+		 */
 		calendar.addEventListener("babycalendar-changemonth", (e) => {
 			let info = e.detail;
 			console.log(info);
 		});
 
+		/*
+		 * When a day is selected, write the information to console.
+		 */
 		calendar.addEventListener("babycalendar-dayselected", (e) => {
 			let info = e.detail;
 			console.log(info);

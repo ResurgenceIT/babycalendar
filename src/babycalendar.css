@@ -3,6 +3,7 @@
 	--babycalendar-header-background-color: #eee;
 	--babycalendar-event-background-hover-color: #eee;
 	--babycalendar-day-color: blue;
+	--babycalendar-day-background-color: #33D1FF;
 }
 
 .babycalendar {
@@ -52,6 +53,7 @@
 }
 
 .babycalendar .body .week .day.disabled:hover {background-color: transparent;}
+.babycalendar .body .week .day.has-event {background-color: var(--babycalendar-day-background-color);}
 
 .babycalendar .body .week .day a {
 	color: var(--babycalendar-day-color);

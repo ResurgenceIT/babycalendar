@@ -40,17 +40,34 @@ A tiny, baby, useless (almost) calendar widget in Vanilla JS.
   </body>
 
   <script src="babycalendar.js" type="module"></script>
-  <script>
+  <script type="module">
+    let today = document.getElementById("today");
+    let calendar = document.getElementById("calendar");
+
+    calendar.eventDates = [
+      "2022-01-14",
+      "2022-01-22",
+      "2022-02-10",
+    ];
+
+    /*
+     * Listen for today click
+     */
     today.addEventListener("click", () => {
-      let el = document.getElementById("calendar");
-      el.today();
+      calendar.today();
     });
 
+    /*
+     * When the month is changed, write the information to console
+     */
     calendar.addEventListener("babycalendar-changemonth", (e) => {
       let info = e.detail;
       console.log(info);
     });
 
+    /*
+     * When a day is selected, write the information to console.
+     */
     calendar.addEventListener("babycalendar-dayselected", (e) => {
       let info = e.detail;
       console.log(info);
@@ -77,6 +94,7 @@ document.getElementById("example").insertAdjacentElement("afterbegin", calendar)
 * **month** - 0-based month. Defaults to 0 (January)
 * **year** - 4-digit year
 * **shownavigation** - *true* to display the month navigation. Defaults to *false*
+* **eventDates** - An array of date strings, each in the format of YYYY-MM-DD
 
 ### Methods
 
@@ -130,6 +148,22 @@ calendar.addEventListener("babycalendar-dayselected", (e) => {
 });
 ```
 
+## Event Dates
+
+Baby Calendar has the ability to highlight days that have one or more events. To do this set the **eventDates** property to an array of date strings. Each string in the array must be formatted liked **YYYY-MM-DD** for a match to happen.
+
+So, given the following array:
+
+```javascript
+calendar.eventDates = [
+  "2022-01-14",
+  "2022-01-22",
+  "2022-02-10",
+];
+```
+
+The day cells of the *Jan 14th*, *Jan 22nd*, and *Feb 10th* of 2022 would have a background color highlight. 
+
 ## Styling
 
 Baby Calendar is easily styled. The markup generated uses basic DIVs and a CSS grid display. All parts of the calendar, the body, header, navigation, buttons, and days, all have classes associated to them. Each item has a color variable as well.
@@ -138,6 +172,7 @@ Baby Calendar is easily styled. The markup generated uses basic DIVs and a CSS g
 * **--babycalendar-header-background-color** - Used for the background of the header (where the days are). Default is #eee
 * **--babycalendar-event-background-hover-color** - Used to control the background color of days when hovered over. Default is #eee
 * **--babycalendar-day-color** - Controls the color of the day numbers. Default is blue
+* **--babycalendar-day-background-color** - Controls the color of the background for days when there are events present. Default is #33D1FF
 
 ## License
 

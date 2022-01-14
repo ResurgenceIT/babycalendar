@@ -25,23 +25,41 @@
 	</body>
 
 	<script src="babycalendar.js" type="module"></script>
-	<script>
+	<script type="module">
+		let today = document.getElementById("today");
 		let calendar = document.createElement("baby-calendar");
-		calendar.setAttribute("month", 0);
-		calendar.setAttribute("year", 2022);
-		calendar.setAttribute("shownavigation", true);
+
+		calendar.id = "calendar";
+		calendar.month = 1;
+		calendar.year = 2022;
+		calendar.showNavigation = true;
+
+		calendar.eventDates = [
+			"2022-01-14",
+			"2022-01-22",
+			"2022-02-10",
+		];
 
 		document.getElementById("example").insertAdjacentElement("afterbegin", calendar);
 
+		/*
+		 * Listen for today click
+		 */
 		today.addEventListener("click", () => {
 			calendar.today();
 		});
 
+		/*
+		 * When the month is changed, write the information to console
+		 */
 		calendar.addEventListener("babycalendar-changemonth", (e) => {
 			let info = e.detail;
 			console.log(info);
 		});
 
+		/*
+		 * When a day is selected, write the information to console.
+		 */
 		calendar.addEventListener("babycalendar-dayselected", (e) => {
 			let info = e.detail;
 			console.log(info);

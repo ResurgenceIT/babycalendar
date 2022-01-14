@@ -23,6 +23,7 @@ export class BabyCalendar extends HTMLElement {
 		this._headerEl = null;
 		this._bodyElID = "";
 		this._bodyEl = null;
+		this._doneDrawing = false;
 
 		let d = new Date();
 
@@ -35,10 +36,24 @@ export class BabyCalendar extends HTMLElement {
 				: false;
 		this._month = parseInt(this.getAttribute("month")) || d.getMonth();
 		this._year = parseInt(this.getAttribute("year")) || d.getFullYear();
+		this._eventDates = this.getAttribute("eventdates") || [];
 	}
 
 	connectedCallback() {
 		this._render();
+		this._doneDrawing = true;
+	}
+
+	get eventDates() {
+		return this._eventDates;
+	}
+
+	set eventDates(value) {
+		this._eventDates = value;
+
+		if (this._doneDrawing) {
+			this.redraw();
+		}
 	}
 
 	get showNavigation() {
@@ -48,7 +63,10 @@ export class BabyCalendar extends HTMLElement {
 	set showNavigation(value) {
 		this._showNavigation = value;
 		this.setAttribute("shownavigation", value);
-		this.redraw();
+
+		if (this._doneDrawing) {
+			this.redraw();
+		}
 	}
 
 	get month() {
@@ -193,8 +211,6 @@ export class BabyCalendar extends HTMLElement {
 	_renderNavigation() {
 		let div = this._drawNavigation();
 		this.insertAdjacentElement("beforeend", div);
-
-		this._updateNavigation();
 	}
 
 	_renderHeader() {
@@ -239,6 +255,7 @@ export class BabyCalendar extends HTMLElement {
 		this._navigationMonthID = this._generateRandomID("navigationlabel");
 		this._navigationMonthEl = document.createElement("span");
 		this._navigationMonthEl.id = this._navigationMonthID;
+		this._navigationMonthEl.innerText = this._getNavigationText();
 		this._navigationMonthEl.classList.add("navigation-label");
 
 		div.insertAdjacentElement("beforeend", left);
@@ -287,11 +304,17 @@ export class BabyCalendar extends HTMLElement {
 
 			if (started) {
 				let a = document.createElement("a");
+				let d = dayIndex - firstDayOfWeek + 1;
 				a.href = "javascript:void";
-				a.innerText = `${dayIndex - firstDayOfWeek + 1}`;
+				a.innerText = `${d}`;
 				a.addEventListener("click", this._onDayClick.bind(this));
 
 				dayDiv.insertAdjacentElement("beforeend", a);
+
+				if (this._hasEventOnDate(d)) {
+					dayDiv.classList.add("has-event");
+				}
+
 				dayDiv.addEventListener("click", this._onDayClick.bind(this));
 			} else {
 				dayDiv.classList.add("disabled");
@@ -316,14 +339,36 @@ export class BabyCalendar extends HTMLElement {
 	}
 
 	_updateNavigation() {
+		let t = this._getNavigationText();
+		let el = document.getElementById(this._navigationMonthID)
+
+		if (el) {
+			el.innerText = t;
+		}
+	}
+
+	_getNavigationText() {
 		let t = `${this._months[this._month]} - ${this._year}`;
-		document.getElementById(this._navigationMonthID).innerText = t;
+		return t;
 	}
 
 	_updateBody() {
 		this._bodyEl = this._drawBody();
 		this._bodyEl.id = this._bodyElID;
 		document.getElementById(this._bodyElID).replaceWith(this._bodyEl);
+	}
+
+	_hasEventOnDate(day) {
+		let d = new Date(this._year, this._month, day);
+		let s = d.toISOString().split("T")[0];
+
+		for (let i = 0; i < this._eventDates.length; i++) {
+			if (this._eventDates[i] === s) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
 
