@@ -64,13 +64,13 @@
 
 .babycalendar .navigation {
 	display: grid;
-	grid-template-columns: 0.1fr 0.8fr 0.1fr;
-	cursor: pointer;
+	grid-template-columns: 0.1fr 0.8fr 0.1fr
 }
 
 .babycalendar .navigation .navigation-button {
 	border: 1px solid var(--babycalendar-border-color);
 	padding: 0.3em;
+	cursor: pointer;
 }
 
 .babycalendar .navigation .left {
