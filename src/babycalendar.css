@@ -3,7 +3,7 @@
 	--babycalendar-header-background-color: #eee;
 	--babycalendar-event-background-hover-color: #eee;
 	--babycalendar-day-color: black;
-	--babycalendar-day-background-color: #33D1FF;
+	--babycalendar-day-background-color: #91a2b5;
 	--babycalendar-border-radius: 8px;
 }
 
@@ -15,7 +15,7 @@
 	border-bottom: 1px solid var(--babycalendar-border-color);
 	max-width: 20em;
 	width: 20em;
-	border-radius: var(-babycalendar-border-radius);
+	border-radius: var(--babycalendar-border-radius);
 	
 }
 
@@ -55,8 +55,13 @@
 	background-color: var(--babycalendar-event-background-hover-color);
 }
 
-.babycalendar .body .week .day.disabled:hover {background-color: transparent;}
-.babycalendar .body .week .day.has-event {background-color: var(--babycalendar-day-background-color);}
+.babycalendar .body .week .day.disabled:hover {
+	background-color: transparent;
+}
+
+.babycalendar .body .week .day.has-event {
+	background-color: var(--babycalendar-day-background-color);
+}
 
 .babycalendar .body .week .day a {
 	color: var(--babycalendar-day-color);
