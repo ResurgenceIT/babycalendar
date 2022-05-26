@@ -2,9 +2,8 @@
 	--babycalendar-border-color: rgb(206, 212, 218);
 	--babycalendar-header-background-color: #eee;
 	--babycalendar-event-background-hover-color: #eee;
-	--babycalendar-day-color: green;
+	--babycalendar-day-color: black;
 	--babycalendar-day-background-color: #33D1FF;
-	--babycalendar-border-radius: 8px;
 }
 
 .babycalendar {
