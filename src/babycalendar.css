@@ -3,7 +3,7 @@
 	--babycalendar-header-background-color: #eee;
 	--babycalendar-event-background-hover-color: #eee;
 	--babycalendar-day-color: black;
-	--babycalendar-day-background-color: #91a2b5;
+	--babycalendar-day-background-color: #a85c4f;
 	--babycalendar-border-radius: 8px;
 }
 
@@ -16,6 +16,7 @@
 	max-width: 20em;
 	width: 20em;
 	border-radius: var(--babycalendar-border-radius);
+	font-family: 'Aref Ruqaa', serif;
 	
 }
 
