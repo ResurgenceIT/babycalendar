@@ -18,7 +18,11 @@
 	border-radius: var(--babycalendar-border-radius);
 	font-family: 'Aref Ruqaa', serif;
 	background-color: #ffffff;
-	filter: drop-shadow(0 0 0.7 #c6c6c9);
+	box-shadow: inset 0 -3em 1em .2em rgba(197, 197, 197, 0.1),
+				0 0  0 1.2px rgb(255,255,255),
+				0em 0.2em 1em rgba(102, 102, 102, 0.3);
+	padding: 8px;
+	margin-bottom: 15px;
 	
 }
 
@@ -33,6 +37,9 @@
 
 .babycalendar .header-day {
 	padding: 0.2em;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 15px;
+
 }
 
 .babycalendar .body {
@@ -52,10 +59,15 @@
 .babycalendar .body .week .day {
 	text-align: center;
 	padding: 0.5em;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 16px;
+	text-decoration: none;
+
 }
 
 .babycalendar .body .week .day:hover {
 	background-color: var(--babycalendar-event-background-hover-color);
+	border-radius: 3px;
 }
 
 .babycalendar .body .week .day.disabled:hover {
@@ -64,15 +76,24 @@
 
 .babycalendar .body .week .day.has-event {
 	background-color: var(--babycalendar-day-background-color);
+	border-radius: 3px;
+	color:white;
+}
+
+.babycalendar .body .week .day.has-event a {
+	color: white;
 }
 
 .babycalendar .body .week .day a {
-	color: var(--babycalendar-day-color);
+	color: rgb(78, 78, 78);
+	text-decoration: none;
+
 }
 
 .babycalendar .navigation {
 	display: grid;
-	grid-template-columns: 0.1fr 0.8fr 0.1fr
+	grid-template-columns: 0.1fr 0.8fr 0.1fr;
+	margin-bottom: 5px;
 }
 
 .babycalendar .navigation .navigation-button {
@@ -81,7 +102,16 @@
 	cursor: pointer;
 }
 
+.babycalendar .navigation .navigation-button:hover {
+	background-color: #000000;
+}
 .babycalendar .navigation .left {
+	border-radius: 5PX;
+	box-shadow: inset  0 -3em 3em .2em rgba(255, 255, 255, 0.1);
+}
+
+.babycalendar .navigation .left:hover {
+	color:rgb(172, 172, 172);
 }
 
 .babycalendar .navigation .left:before {
@@ -89,6 +119,11 @@
 }
 
 .babycalendar .navigation .right {
+	border-radius: 5PX;
+}
+
+.babycalendar .navigation .right:hover {
+	color:rgb(172, 172, 172);
 }
 
 .babycalendar .navigation .right:before {
@@ -97,5 +132,26 @@
 
 .babycalendar .navigation .navigation-label {
 	text-align: center;
-	font-weight: 300;
+	font-weight: bold;
+	color: #723f36;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.today{
+	border-radius: 5px;
+	stroke-width: 0px;
+	border-width: .1px;
+	border-color: rgb(184, 184, 184);
+	padding: 4px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	box-shadow: 0em 0.2em .2em rgba(102, 102, 102, 0.3);
+	color:rgb(70, 70, 70);
+	cursor: pointer;
+}
+
+
+.today:hover{
+	background-color: #f5d6d0;
+	color:rgb(247, 247, 247);
+}
+
