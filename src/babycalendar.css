@@ -137,7 +137,11 @@
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+<<<<<<< HEAD
 .today{
+=======
+#today{
+>>>>>>> 51671a3872213e395f2fe7db69251cbe6d509226
 	border-radius: 5px;
 	stroke-width: 0px;
 	border-width: .1px;
@@ -146,12 +150,23 @@
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	box-shadow: 0em 0.2em .2em rgba(102, 102, 102, 0.3);
 	color:rgb(70, 70, 70);
+<<<<<<< HEAD
 	cursor: pointer;
 }
 
 
+=======
+}
+
+>>>>>>> 51671a3872213e395f2fe7db69251cbe6d509226
 .today:hover{
 	background-color: #f5d6d0;
 	color:rgb(247, 247, 247);
 }
 
+<<<<<<< HEAD
+=======
+#today {
+	color: #eee;
+}
+>>>>>>> 51671a3872213e395f2fe7db69251cbe6d509226
